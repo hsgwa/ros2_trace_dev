@@ -25,6 +25,13 @@ ROS2 レイヤーのトレースポイントも利用するため、
 
 インストール手順については [micro-ROS tutorial](https://micro-ros.github.io/docs/tutorials/advanced/tracing/) と [lttng.org](https://lttng.org/docs/) をご覧ください。
 
+#### Python モジュールのインストール
+必要なモジュールをインストールします。
+
+```
+$ pip install pandas fire
+```
+
 ### Fork 版 Foxy のビルド
 
 Fork 版 Foxy のビルドにあたり、専用の ros2.repos を用意してあります。  
