@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/hsgwa/ros2_trace_dev/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## はじめに
+本ツール ROS2 アプリケーションの性能測定機能を追加した Fork 版 ROS2 です。  
+ROS2 のメインの開発とは一旦切り離し、関連するパッケージへ柔軟な変更を加えたことにより、 以下の特徴があります。
 
-### Markdown
+- 任意のアプリケーションで性能の測定が可能
+- 測定する際にアプリケーションの修正は不要
+  （※ ただし、アプリケーションの再ビルドが必要）
+- ベースのトレースツールに LTTng (ros2_tracing) を利用
+   - 低オーバーヘッドなトレース
+   - カーネルイベントも同時にトレース可能
+   - トレース対象は実行時に選択可能
+- 以下の対象の測定について、OK/NG のテスト判定や、ボトルネックの特定が可能。
+  - コールバックの実行時間
+  - コールバックに依存が存在する際のコールバック間のレイテンシ
+  - 通信レイテンシ
+  - ノードレイテンシ（厳密には推定）
+  - End-to-End レイテンシ（厳密には推定）
+- コマンドラインインターフェースを備えており、ターミナル上で利用が可能
+- テスト要件 yaml ファイルで与えることで、CI への組み込みが可能
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## ドキュメント一覧
 
-```markdown
-Syntax highlighted code block
+- [セットアップ方法](./docs/setup.md)
+- [デモの実行](./docs/run_demo.md)
+  - [architecture ファイルの作成](./docs/architecture.md)
+  - [jupyter での解析](./docs/jupyter_analysis.md)
+  - [CI への組み込み](./docs/ci.md)
+  - [グラフの種類と見方](./docs/how_to_read_graph.md)
+ - [CUI ツール一覧](./docs/cui.md)
+- [ロードマップ](./docs/roadmap.md)
+- 設計関連資料
+  - [ツールの検討および設計資料](./docs/design.md)
+  - [その他の測定方法との比較](./docs/direct_vs_indirect.md)
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hsgwa/ros2_trace_dev/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
