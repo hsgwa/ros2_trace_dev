@@ -50,7 +50,7 @@ def generate_launch_description():
 ```bash
 $ cd ~/ros2_ws
 $ . ./install/setup.bash
-$ ros2 launch e2e_demo demo.launch.pyros2 launch e2e_demo demo.launch.py
+$ ros2 launch e2e_demo demo.launch.py
 ```
 
 測定結果は`~/.ros/tracing/[session_name]`に Common Trace Format (CTF) 形式で保存されます。
