@@ -52,7 +52,7 @@
 End-to-End
 ├── Communication	通信＆スケジューリング：publish() から callback() 実行直前まで
 │   └── DDS			通信：dds_write から on_data_available() 実行直前まで
-└── Node			
+└── Node            subscribe や timer コールバックの開始から publish するコールバックの終了まで
     ├── Callback	コールバックの実行時間：callback() 開始直前から callback() 終了直後まで
     └── Schedulling	コールバック間の時間： callback() 終了直後から callback() 開始直前まで
 ```
