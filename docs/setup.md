@@ -46,10 +46,10 @@ $ vcs import src < ros2.repos
 $ colcon build --symlink-install
 ```
 
-`vcs import`は上書きは行わないコマンドです。  
+`vcs import`は上書きは行わないません。
 バグ fix や機能拡張などがあった際には、以下のコマンドで各リポジトリを最新の状態に更新してください。
 ```bash
-$ find src/ -name .git | xargs -I@ dirname @ | xargs -I@ -P8 sh -c 'cd @ && git pull'
+$ vcs pullsrc
 ```
 
 ### flamegraph.pl のインストール

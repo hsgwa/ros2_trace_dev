@@ -30,14 +30,14 @@
 
 ### 時系列
 
-横軸：レイテンシのサンプル番号  
-縦軸：レイテンシ [ms]
+横軸：システム時刻／rostime（clock_recorder で/clock をトレースする必要あり）  
+縦軸：レイテンシ
 
 [![timeseries_sample](../imgs/timeseries_sample.png)](../imgs/timeseries_sample.png)
 
 ### 確率分布
 
-横軸：レイテンシ [ms] （1ms 刻み）  
+横軸：レイテンシ
 縦軸：確率（ヒストグラムを１に正規化した値）
 
 [![hist_sample](../imgs/hist_sample.png)](../imgs/hist_sample.png)
@@ -66,7 +66,5 @@ jupyter 上での検証も可能ですが、一つのグラフ上にこれら階
 
 [![flamegraph](../imgs/flamegraph.png)](../imgs/flamegraph.png)
 
-こちらは、ブラウザで svg ファイルを開くと、  
-カーソルオーバー時にそれぞれのレイテンシの最大値や割合を確認できます。
-
+ブラウザで svg ファイルを開くと、カーソルオーバー時にそれぞれのレイテンシの最大値や割合を確認できます。  
 [サンプルの flamegraph](../imgs/flamegraph_sample.svg)

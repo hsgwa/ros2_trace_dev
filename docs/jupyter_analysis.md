@@ -36,13 +36,13 @@ $ jupyter-lab
 
 ### python モジュールの使い方
 
-各取得可能なレイテンシは、以下のような階層関係があります。
+各取得可能なレイテンシは、以下のような階層構造になっています。
 
 ```
 End-to-End
 ├── Communication   通信＆スケジューリング：publish() から callback() 実行直前まで
 │   └── DDS         通信：dds_write から on_data_available() 実行直前まで
-└── Node
+└── Node            subscribe や timer コールバックの開始から publish するコールバックの終了まで
     ├── Callback    コールバックの実行時間：callback() 開始直前から callback() 終了直後まで
     └── Schedulling コールバック間の時間： callback() 終了直後から callback() 開始直前まで
 ```
@@ -50,19 +50,17 @@ End-to-End
 以降の内容では、上の階層から下の階層まで、順に測定結果を取得する方法を説明します。  
 Callback, Communication, DDS の解析のみであれば、アーキテクチャファイルは雛形がそのまま利用可能です。
 
-#### 測定データのフォーマット
+#### Path オブジェクトの API
+レイテンシは Path オブジェクトの API を使用することで取得が可能です。  
+Path オブジェクトは以下を内部で保持しています。
 
-測定データは確率分布と時系列が取得できます。  
-取得用 API の戻り値は 1×N の numpy.array 型になっており、  
-インデックスが確率分布と時系列でレイテンシの幅とサンプリング順に対応しています。
+- レイテンシの確率分布 : `path.hist(binsize_ns: int)`
+- レイテンシの時系列 : `path.timeseries(use_simtime: bool)`
+- 基本統計量：`path.get_stats()`
+  - 通信レイテンシ、コールバック間のレイテンシについてはロストも算出されます。
+- パスを構成する下階層の Path : `path.child`
 
-| レイテンシの幅 [ms]  | 0~1  | 1~2  | 2~3  | ...  | max  | max+1 |
-| -------------------- | ---- | ---- | ---- | ---- | ---- | ----- |
-| path.hist.raw [確率] | 0    | 0    | 0.1  | ...  | 0.1  | 0     |
-
-| サンプリング順  | 1    | 2    | 3    | ...  | N    |
-| --------------- | ---- | ---- | ---- | ---- | ---- |
-| レイテンシ [ms] | 10   | 10.1 | 9.9  | ...  | 10   |
+以降では End-to-End レイテンシからコールバックの実行時間までの測定結果を取得する例を示します。
 
 #### End-to-End レイテンシの取得
 
@@ -83,8 +81,11 @@ e2e_path.child_names    # パスの中身は　path.child_names で取得
 # sensor_dummy_node_2--no_dependency_node_0--sub_dependency_node_1--timer_dependency_node_1--actuator_dummy_node_1
 
 # レイテンシの確立分布の取得
-e2e_path.hist.raw
-# array([0.00e+00, ..., ])
+latency_ms, hist = e2e_path.hist(binsize_ns=1e6).get_xy()
+
+# レイテンシの時系列の取得
+system_time_ns, latency_ns = path.timeseries.get_xy()
+simtime_ns_, latency_ns = path.timeseries.get_xy(use_simtime=True)
 
 # 基本統計量の取得
 e2e_path.get_stats()
@@ -123,13 +124,12 @@ comm.node_sub.name
 # timer_dependency_node
 
 # レイテンシの確立分布の取得
-comm.hist.raw
-dds.hist.raw
-# array([0.00e+00, ..., ])
+latency_ms, hist = comm.hist(binsize_ns=1e6).get_xy()
+latency_ms, hist = dds.hist(binsize_ns=1e6).get_xy()
 
 # 時系列のレイテンシの取得
-comm.timeseries.raw
-dds.timeseries.raｗ
+system_time_ns, latency_ns = comm.timeseries.get_xy()
+system_time_ns, latency_ns = dds.timeseries.get_xy()
 
 # 基本統計量の取得
 comm.get_stats()
@@ -164,8 +164,10 @@ node.name
 node_path = node.paths[0]
 
 # レイテンシの確立分布の取得
-node_path.hist.raw
-# array([0.00e+00, ..., ])
+latency_ms, hist = node_path.hist(binsize_ns=1e6).get_xy()
+
+# レイテンシの時系列の取得
+system_time_ns, latency_ns = node_path.timeseries.get_xy()
 
 # 基本統計量の取得
 node_path.get_stats()
@@ -200,13 +202,12 @@ sched = path.child[1]       # 奇数インデックスはコールバック間�
 # sched    = app.nodes[0].scheds[0]
 
 # レイテンシの確立分布の取得
-callback.hist.raw
-sched.hist.raw
-# array([0.00e+00, ..., ])
+latency_ms, hist = callback.hist(binsize_ns=1e6).get_xy()
+latency_ms, hist = sched.hist(binsize_ns=1e6).get_xy()
 
 # 時系列のレイテンシの取得
-callback.timeseries.raw
-sched.timeseries.raｗ
+system_time_ns, latency_ns = callback.timeseries.get_xy()
+system_time_ns, latency_ns = sched.timeseries.get_xy()
 
 # 基本統計量の取得
 callback.get_stats()

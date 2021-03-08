@@ -1,4 +1,6 @@
-## デモの実行
+
+
+
 
 サンプルとして [e2e_demo](https://github.com/hsgwa/e2e_demo) を使い、本ツールで測定する際の流れを説明します。  
 同じ手順を踏むことで、任意のアプリケーションの測定が可能です。
@@ -17,17 +19,29 @@
 ```bash
 $ mkdir -p ~/ros2_ws/src
 $ cd ~/ros2_ws
-$ git clone https://github.com/hsgwa/e2e_demo.git ./src/e2e_demo
+$ git clone --recursive https://github.com/hsgwa/e2e_demo.git ./src/e2e_demo
 $ source ~/ros2_foxy_fork/install/setup.bash # Fork 版 Foxy を使用してビルド
 $ colcon build --symlink-install
 ```
+
+それぞれの e2e_demo リポジトリは以下のパッケージで構成されています。
+
+- e2e_demo
+  - 測定対象のアプリケーション。任意のアプリケーション。
+  - 測定したい対象の任意のアプリケーションに対応
+- clock_recorder
+  - /clock トピックを subscribe し、rostime をトレースファイルに出力するアプリケーション。
+  - 時系列波形を算出する際にシステム時刻と rostime のマッチングを取るのに必要なパッケージ
+- clock_publisher
+  - /clock トピックに rostime を publish するアプリケーション。rostime は 0 から１秒刻みで出力。
+  - 本アプリケーション専用の rostime を publish するアプリケーション
 
 ### launch ファイルの修正
 
 LTTng はデータの書き込みなどを行うデーモンを使用する際に、セッションを作成する必要があります。  
 ここでは、launch 時にセッションを作成するために、launch ファイルに以下を追加します。
 
-なお、`e2e_demo/launch/demo.launch.py` には既に追加してあります。
+※ `e2e_demo/launch/demo.launch.py` には既に追加してあります。
 
 ```python
 from tracetools_launch.action import Trace
@@ -41,6 +55,31 @@ def generate_launch_description():
         ...]
 ```
 
+なお、rostime を使用する際には、rostime を記録するノードとセッションを別途起動する必要があります。
+
+```python
+def generate_launch_description():
+    return launch.LaunchDescription([
+        # ...
+        Trace(
+            session_name='e2e_demo_clock',
+            events_kernel=[],
+            events_ust=['rostime:ros_time']
+        ),
+       launch_ros.actions.Node(
+            package='clock_recorder', executable='recorder', output='screen'
+        ),
+        ...]
+```
+
+tracetools_launch.action.Trace それぞれの引数は以下の通りです。
+
+| 引数          | 説明                                                                          |
+|---------------|-------------------------------------------------------------------------------|
+| sessyon_name  | LTTng のセッション名。`~/.ros/trace/session_name`にトレース結果が保存されます |
+| events_kernel | セッションに記録させるカーネルのイベント名。イベントを記録させない場合は[]を指定。                                                                                   |
+| events_ust | セッションに記録させるユーザーランド（ROS レイヤー）のイベント名。イベントを記録させない場合は[]を指定。                                                                                   |
+
 
 
 ### アプリケーションの実行／測定
@@ -50,15 +89,19 @@ def generate_launch_description():
 ```bash
 $ cd ~/ros2_ws
 $ . ./install/setup.bash
-$ ros2 launch e2e_demo demo.launch.py
+$ ros2 launch e2e_demo clock_demo.launch.py
+# 数秒後に Ctrl+C で測定終了させる
+$ # ros2 launch e2e_demo demo.launch.py # rostime を使わない場合はこちらを使用
 ```
 
 測定結果は`~/.ros/tracing/[session_name]`に Common Trace Format (CTF) 形式で保存されます。
 
 ```bash
-$ ls ~/.ros/tracing
-e2e_demo
+$ ls ~/.ros/tracing/
+e2e_demo  e2e_demo_clock
 ```
+
+`e2e_demo`にアプリケーションのトレース結果、`e2e_demo_clock`に rostime のトレース結果が保存されます。
 
 トレース結果の ctf ファイルの中身は babeltrace で確認できます。
 
@@ -95,7 +138,7 @@ jupyter をする際には、サービスを起動します。
 
 ```bash
 $ . ~/ros2_foxy_fork/install/setup.bash
-$ cd ~/ros2_ws/src/e2e_demo/analysis
+$ cd ~/ros2_ws/src/e2e_demo/e2e_demo/analysis/
 $ jupyter-lab
 ```
 
@@ -171,7 +214,7 @@ $ tree .
 ├── output.yaml
 └── graph
     ├── end_to_end_1-hist.png
-    ├── ... （各測定結果のグラフは自動で出力される）
+    ├── ... （テスト対象以外の測定結果も含めて全てのグラフが出力される）
     ├── topic6_0-hist.png
     └── topic6_0-timeseries.png
 ```

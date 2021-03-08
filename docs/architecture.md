@@ -49,24 +49,32 @@ architecture.png には、コールバックを含んだノード図が出力さ
 青の実線で描かれた矢印はコールバックからコールバックへの依存が記述されているパスを示し、  
 黒の点線で描かれた矢印はノードからコールバックへの依存までしか記述されていないパスを示しています。
 
-### 手作業での修正
+### アーキテクチャファイルの修正
 
-出力直後の雛形は、コールバックの依存関係など一部の記述がされていません。  
-それらの項目は手動での修正が必要になります。
+出力直後の雛形は、コールバックの依存関係などが記述されません。  
+End-to-End レイテンシなどの値を算出する際には、
+手動でアーキテクチャファ理うの修正が必要になります。
+
+※ コールバックの実行時間や通信時間のみの測定の場合には省略が可能です。  
+詳細は[グラフの一覧と出力対応状況](./how_to_read_graph.md)をご覧ください。
+
+修正が必要な項目は以下になります。
 
 1. End-to-End の始点と終点を設定
    1. [/target_path/start_node_name]に始点となるノード名（名前空間含む）を記述します。
    2. [/target_path/end_node_name]に終点となるノード名（名前空間含む）を記述します。
 2. コールバック関数と publish するトピック名の紐付け
-   1. [/nodes/node_obj/publish] には、ノードが publish しているトピック名が key として列挙されています。
-   2. value にトピックを publish  しているコールバックの symbol を記述します。
+   1. [/nodes/node_obj/publish] には、ノードが publish しているトピック名が key として列挙されています。  
+      value にトピックを publish  しているコールバックの symbol を記述してください。
    3. trace_draw_node_graph コマンドで可視化した際、すべてが青矢印になるまで繰り返します。
 3. コールバック関数間の依存関係の記述
    1. ノード内にコールバック間の依存関係が存在する場合、
-      [/nodes/node_obj/callback_dependency] にコールバックの依存関係を記述します。
-   2. 依存関係は key と value で記述します。
-      `callback_A -> callback_B` の場合、`"callback_A の symbol" : "callback_B の symbol"`と記述してください。
-   3. trace_draw_node_graph コマンドで可視化した際、必要な依存関係がすべて表現されるまで繰り返します。
+      [/nodes/node_obj/callback_dependency] にコールバックの依存関係を key と value で記述します。  
+      `callback_A -> callback_B` の依存関係がある場合、`"callback_A の symbol 名" : "callback_B の symbol 名"`と記述してください。
+   2. trace_draw_node_graph コマンドで可視化した際、必要な依存関係がすべて表現されるまで繰り返します。
+4. パス名のエイリアス（任意）
+    1. 測定対象のパス名に名前を付ける場合、`path_name_alias`にパス名のエイリアスを設定します。
+    2. `"対象のパス名": "パス名のエイリアス"`と記述してください。
 
 
 
@@ -80,7 +88,7 @@ $ trace_draw_node_graph ./architecture.json ./architecture.png
 [![architecture](../imgs/node_graph.png)](../imgs/node_graph.png)
 
 青ノードが End-to-End の始点ノード、黄ノードが End-to-End の始点ノードを示しています。  
-すべての矢印（コールバックの依存関係）が青色の実線で、コールバックからコールバックまでつながっています。
+すべての矢印（コールバックの依存関係）が青色の実線で、それぞれの線がコールバックからコールバックまでつながっています。
 
 ### アーキテクチャファイルのフォーマット
 
@@ -116,5 +124,8 @@ $ trace_draw_node_graph ./architecture.json ./architecture.png
       ]
     }
   ]
+  "path_name_alias": {
+    "命名対象のパス名": "命名するパスの名前"
+  }
 }
 ```
