@@ -6,6 +6,9 @@
 
 ここでは、[e2e_demo](https://github.com/hsgwa/e2e_demo)を例に、アーキテクチャファイルの作成および修正の方法を説明します。
 
+
+[![how-to-create-architecture-file](../imgs/how_to_create_architecture_file.png)](../imgs/how_to_create_architecture_file.png)
+
 * TOC
 {:toc}
 
@@ -25,6 +28,8 @@ $ cat ./architecture.json
   "..." []
 }
 ```
+
+### アーキテクチャファイルの可視化
 
 生成されたアーキテクチャファイルは以下のコマンドで可視化できます。
 

@@ -7,6 +7,10 @@
 
 デモの実行前に、[Fork 版 Foxy のセットアップ](./setup.md) が必要です。
 
+
+[![overview](../imgs/overview.png)](../imgs/overview.png)
+
+
 * TOC
 {:toc}
 
@@ -35,6 +39,10 @@ $ colcon build --symlink-install
 - clock_publisher
   - /clock トピックに rostime を publish するアプリケーション。rostime は 0 から１秒刻みで出力。
   - 本アプリケーション専用の rostime を publish するアプリケーション
+
+
+<br />
+なお、任意のアプリケーションで rostime を使用する際は、[clock_recorder](https://github.com/hsgwa/clock_recorder/tree/main)を別途クローンしてビルドが必要です。
 
 ### launch ファイルの修正
 
@@ -222,7 +230,8 @@ $ tree .
 測定結果の例を示します。  
 出力されるグラフの種類や、それぞれのグラフの読み方については、[グラフの種類とグラフの見方](./how_to_read_graph.md) をご覧ください。
 
-[![e2e_result_sample](../imgs/e2e_result_sample.png)](../imgs/e2e_result_sample.png)
+[![e2e_result_sample](../imgs/hist_sample.png)](../imgs/hist_sample.png)
+[![e2e_result_sample](../imgs/timeseries_sample.png)](../imgs/timeseries_sample.png)
 
 ### flamegraph の出力
 

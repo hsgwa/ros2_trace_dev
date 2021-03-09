@@ -49,7 +49,7 @@ $ colcon build --symlink-install
 `vcs import`は上書きは行わないません。
 バグ fix や機能拡張などがあった際には、以下のコマンドで各リポジトリを最新の状態に更新してください。
 ```bash
-$ vcs pullsrc
+$ vcs pull src
 ```
 
 ### flamegraph.pl のインストール

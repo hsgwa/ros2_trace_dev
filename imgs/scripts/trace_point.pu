@@ -1,0 +1,62 @@
+@startuml
+
+participant App
+participant ROS
+participant DDS
+participant LTTng
+
+== Publisher Node ==
+
+App -> ROS: publish()
+activate ROS
+ROS --> LTTng: ros2:publish
+
+ROS -> DDS: dds_write()
+deactivate ROS
+activate DDS
+DDS --> LTTng: ros2:dds_write
+note right: testtest
+deactivate DDS
+
+== Subscribe Node ==
+
+App -> ROS : spin()
+activate DDS
+activate ROS
+
+loop 
+    ROS -> ROS : wait until next event
+    activate ROS
+    DDS --> LTTng: ros2:dds_read
+    DDS -> ROS: notify()
+    deactivate ROS
+
+    deactivate DDS
+    ROS -> DDS : reset ready-set, take messages
+    activate DDS
+    DDS -> ROS 
+    deactivate DDS
+
+    group execute timer callbacks
+    end 
+
+    group execute subscriber callbacks
+        ROS --> LTTng: ros2:subscribe
+        ROS --> LTTng: ros2:callback_start
+        ROS -> App: callback start
+        activate App
+        App -> ROS: callback end
+        deactivate App
+        ROS --> LTTng: ros2:callback_end
+    end
+
+    group execute service callbacks
+    end
+
+    group execute client callbacks
+    end
+end
+
+deactivate ROS
+
+@enduml

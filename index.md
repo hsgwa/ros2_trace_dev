@@ -30,10 +30,10 @@ ROS2 のメインの開発とは一旦切り離し、関連するパッケージ
   - [architecture ファイルの作成](./docs/architecture.md)
   - [jupyter での解析](./docs/jupyter_analysis.md)
   - [CI への組み込み](./docs/ci.md)
-  - [グラフの種類と見方](./docs/how_to_read_graph.md)
- - [CUI ツール一覧](./docs/cui.md)
+- [グラフの種類と見方](./docs/how_to_read_graph.md)
+- [CUI ツール一覧](./docs/cui.md)
 - [ロードマップ](./docs/roadmap.md)
+- [測定値の定義](./docs/definition.md)
 - 設計関連資料
-  - [ツールの検討および設計資料](./docs/design.md)
   - [その他の測定方法との比較](./docs/direct_vs_indirect.md)
 

@@ -1,0 +1,36 @@
+strict digraph "" {
+        graph [compound=True,
+                rankdir=LR,
+                style=rounded
+        ];
+        node [label="\N",
+                shape=rect
+        ];
+        subgraph cluster_target_node {
+                graph [
+                    label="Target Node",
+                    style=rounded
+                ];
+                "timer_callback" [label="callback", fillcolor=rosybrown1, style=filled];
+                "subscribe_callback" [label="callback", fillcolor=rosybrown1, style=filled];
+        }
+        subgraph cluster_end_node {
+                graph [
+                        label="End Node",
+                        fillcolor=bisque,
+                        style="rounded, filled, solid"
+                ];
+                "control_sub1" [label="callback", fillcolor=rosybrown1, style=filled]
+        }
+        subgraph cluster_start_node {
+                graph [
+                        label="Start Node",
+                        fillcolor=lightblue1,
+                        style="rounded, filled, solid"
+                ];
+                "sensor_pub" [label="callback", fillcolor=rosybrown1, style=filled];
+        }
+        "timer_callback" -> "control_sub1"       [color=red, label="/command"];
+        "subscribe_callback" -> "timer_callback"   [color=red];
+        "sensor_pub" -> "subscribe_callback"       [color=red, label="/sencor"];
+}
