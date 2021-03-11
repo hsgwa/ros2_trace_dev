@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="189.0649mm"
-   height="63.241096mm"
-   viewBox="0 0 189.06489 63.241097"
+   height="65.203773mm"
+   viewBox="0 0 189.06489 65.203774"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
@@ -24,14 +24,76 @@
     <marker
        inkscape:isstock="true"
        style="overflow:visible"
+       id="marker7009"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7007"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5901"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5899"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.4,0,0,0.4,4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4605"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4603"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3491"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3489"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
        id="marker46451"
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Send">
+       inkscape:stockid="Arrow1Send"
+       inkscape:collect="always">
       <path
          transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
-         style="fill:#ff2c00;fill-opacity:1;fill-rule:evenodd;stroke:#ff2c00;stroke-width:1.00000003pt;stroke-opacity:1"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path46449"
          inkscape:connector-curvature="0" />
@@ -291,7 +353,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Mend">
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
       <path
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
@@ -321,7 +384,8 @@
        refX="0"
        refY="0"
        orient="auto"
-       inkscape:stockid="Arrow1Mstart">
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:collect="always">
       <path
          transform="matrix(0.4,0,0,0.4,4,0)"
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
@@ -2752,18 +2816,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="429.06833"
-     inkscape:cy="125.66153"
-     inkscape:document-units="mm"
+     inkscape:zoom="0.25"
+     inkscape:cx="23.482519"
+     inkscape:cy="44.568314"
+     inkscape:document-units="in"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-global="false"
      showguides="true"
      showborder="false"
-     inkscape:window-width="956"
+     inkscape:window-width="1340"
      inkscape:window-height="1041"
-     inkscape:window-x="2880"
+     inkscape:window-x="1920"
      inkscape:window-y="18"
      inkscape:window-maximized="0"
      fit-margin-top="0"
@@ -2775,8 +2839,8 @@
     <inkscape:grid
        type="xygrid"
        id="grid92939"
-       originx="-41.073734"
-       originy="-86.035054" />
+       originx="-41.073732"
+       originy="-84.072381" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -2796,12 +2860,12 @@
      id="layer1"
      transform="translate(41.786308,-155.77292)">
     <rect
-       style="opacity:0.993;fill:#ffffff;fill-opacity:1;stroke:#ff2c00;stroke-width:1.16499996;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:0.99299999;fill:#ffffff;fill-opacity:1;stroke:#ff2c00;stroke-width:1.16499996;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect48243"
        width="283.63333"
        height="129.11667"
-       x="-66.127975"
-       y="136.46402" />
+       x="-66.921722"
+       y="136.72861" />
     <g
        id="g4494"
        transform="translate(-173.84412,-196.8824)">
@@ -3591,25 +3655,77 @@
          style="stroke-width:0.26458332">対象ノード</tspan></text>
     <text
        id="text48241"
-       y="218.73709"
+       y="220.70152"
        x="-13.633611"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          id="tspan48239"
          style="font-size:3.52777767px;line-height:1em;stroke-width:0.26458332"
-         y="218.73709"
+         y="220.70152"
          x="-13.633611"
          sodipodi:role="line">実際のデータの流れ</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="58.862225"
-       y="218.73532"
+       y="220.698"
        id="text48237"><tspan
          sodipodi:role="line"
          x="58.862225"
-         y="218.73532"
+         y="220.698"
          style="font-size:3.52777767px;line-height:1em;stroke-width:0.26458332"
          id="tspan48235">悲観的読み書きタイミング時のデータの流れ</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.79499992, 0.79499992;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -28.689432,188.71922 v 25.45091"
+       id="path2397"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2399"
+       d="m -11.359225,206.7109 v 6.71088"
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.79499995, 0.79499995;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker51034);marker-end:url(#marker4605)"
+       d="m -28.128835,212.27883 h 16.089626"
+       id="path2401"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-30.190958"
+       y="215.83722"
+       id="text5875"><tspan
+         sodipodi:role="line"
+         x="-30.190958"
+         y="215.83722"
+         style="font-size:2.11666656px;line-height:1em;stroke-width:0.26458332"
+         id="tspan5873">実際のノードレイテンシ</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path5877"
+       d="m 63.171105,188.71922 v 25.45091"
+       style="fill:none;stroke:#000000;stroke-width:0.26499996;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.79499992, 0.79499992;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.79499995, 0.79499995;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 96.21676,206.7109 v 6.71088"
+       id="path5879"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path5893"
+       d="M 64.400362,212.27883 H 95.522924"
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker5901);marker-end:url(#marker7009)" />
+    <text
+       id="text5897"
+       y="215.83722"
+       x="69.901482"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         id="tspan5895"
+         style="font-size:2.11666656px;line-height:1em;stroke-width:0.26458332"
+         y="215.83722"
+         x="69.901482"
+         sodipodi:role="line">算出されるノードレイテンシ</tspan></text>
   </g>
 </svg>
