@@ -58,7 +58,7 @@ architecture.png には、コールバックを含んだノード図が出力さ
 
 出力直後の雛形は、コールバックの依存関係などが記述されません。  
 End-to-End レイテンシなどの値を算出する際には、
-手動でアーキテクチャファ理うの修正が必要になります。
+手動でアーキテクチャファイルの修正が必要になります。
 
 ※ コールバックの実行時間や通信時間のみの測定の場合には省略が可能です。  
 詳細は[グラフの一覧と出力対応状況](./how_to_read_graph.md)をご覧ください。
@@ -80,6 +80,11 @@ End-to-End レイテンシなどの値を算出する際には、
 4. パス名のエイリアス（任意）
     1. 測定対象のパス名に名前を付ける場合、`path_name_alias`にパス名のエイリアスを設定します。
     2. `"対象のパス名": "パス名のエイリアス"`と記述してください。
+
+e2e_demo の場合の修正は以下のようになります。  
+雛形と修正済みアーキテクチャファイルの差分は [Github の Diff](https://github.com/hsgwa/e2e_demo/commit/2393e46f86a30da47c1b4105c721ed291767234b?branch=2393e46f86a30da47c1b4105c721ed291767234b&diff=unified#diff-93c948d761539ffdf446c5c5744ccdbd1d246c792bfcec38a32afdf993ea3cff) をご覧ください。
+
+[![Architecture modification](../imgs/architecture_modification.png)](../imgs/architecture_modification.png)
 
 
 
