@@ -4,13 +4,13 @@
 ここでは、それぞれの CUI ツールの一覧と使い方を説明します。
 
 
-| コマンド名            | 概要                                                       |
-|-----------------------|------------------------------------------------------------|
-| trace_create_template | トレース結果からアーキテクチャファイルの生成               |
-| trace_draw_node_graph | アーキテクチャファイルからノード図の作成                   |
-| trace_list_target     | テスト対象のパス名の一覧を出力                             |
-| trace_analysis        | テスト要件 yaml を元に、各グラフの作成とサマリ yaml の出力 |
-| trace_collapse        | 解析結果から flamegraph.pl 向けのテキストを出力            |
+| コマンド名                                      | 概要                                                       |
+|-------------------------------------------------|------------------------------------------------------------|
+| [trace_create_template](#trace_create_template) | トレース結果からアーキテクチャファイルの生成               |
+| [trace_draw_node_graph](#trace_draw_node_graph) | アーキテクチャファイルからノード図の作成                   |
+| [trace_list_target](#trace_list_target)         | テスト対象のパス名の一覧を出力                             |
+| [trace_analysis](#trace_analysis)               | テスト要件 yaml を元に、各グラフの作成とサマリ yaml の出力 |
+| [trace_collapse](#trace_collapse)               | 解析結果から flamegraph.pl 向けのテキストを出力            |
 
 上記のコマンドを利用するためには、以下のコマンドを実行してパスを通す必要があります。
 
