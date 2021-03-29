@@ -27,6 +27,7 @@ ROS2 のメインの開発とは一旦切り離し、関連するパッケージ
 
 - [セットアップ方法](./docs/setup.md)
 - [デモの実行](./docs/run_demo.md)
+  - [測定方法](./docs/measure.md)
   - [architecture ファイルの作成](./docs/architecture.md)
   - [jupyter での解析](./docs/jupyter_analysis.md)
   - [CI への組み込み](./docs/ci.md)
