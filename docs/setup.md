@@ -10,20 +10,62 @@
 
 ### システムのセットアップ
 
-#### ビルド関連パッケージのインストール
-
-[System setup](https://index.ros.org/doc/ros2/Installation/Foxy/Linux-Development-Setup/#system-setup) にならい、foxy をビルドに必要な環境をセットアップします。  
-以下の章のコマンドを実行してください。
-
-1. Set locale
-2. Install development tools and ROS tools
-
 #### LTTng のインストール
 
 ROS2 レイヤーのトレースポイントも利用するため、  
 事前に LTTng のインストールが必要です。
 
-インストール手順については [micro-ROS tutorial](https://micro-ros.github.io/docs/tutorials/advanced/tracing/) と [lttng.org](https://lttng.org/docs/) をご覧ください。
+```
+apt-add-repository ppa:lttng/stable-2.12
+apt-get update
+apt-get install lttng-tools
+apt-get install lttng-modules-dkms
+apt-get install liblttng-ust-dev
+apt-get install python3-lttngust
+```
+
+#### ビルド関連パッケージのインストール
+
+[System setup](https://index.ros.org/doc/ros2/Installation/Foxy/Linux-Development-Setup/#system-setup) にならい、foxy をビルドに必要な環境をセットアップします。  
+以下の章のコマンドを実行してください。
+
+```
+sudo apt update && sudo apt install -y \
+  build-essential \
+  cmake \
+  git \
+  libbullet-dev \
+  python3-colcon-common-extensions \
+  python3-flake8 \
+  python3-pip \
+  python3-pytest-cov \
+  python3-rosdep \
+  python3-setuptools \
+  python3-vcstool \
+  wget
+# install some pip packages needed for testing
+python3 -m pip install -U \
+  argcomplete \
+  flake8-blind-except \
+  flake8-builtins \
+  flake8-class-newline \
+  flake8-comprehensions \
+  flake8-deprecated \
+  flake8-docstrings \
+  flake8-import-order \
+  flake8-quotes \
+  pytest-repeat \
+  pytest-rerunfailures \
+  pytest
+# install Fast-RTPS dependencies
+sudo apt install --no-install-recommends -y \
+  libasio-dev \
+  libtinyxml2-dev
+# install Cyclone DDS dependencies
+sudo apt install --no-install-recommends -y \
+  libcunit1-dev
+```
+
 
 #### Python モジュールのインストール
 必要なモジュールをインストールします。
